@@ -43,9 +43,9 @@ public class PlayerService {
                 .collect(Collectors.toList());
     }
 
-    public List<Player> getPlayersByTeamAndPos(String teamName, String pos) {
-        return playerRepository.findByTeam(teamName).stream()
-                .filter(player -> player.getPos().toLowerCase().contains(pos.toLowerCase()))
+    public List<Player> getPlayersByTeamAndPosition(String team, String position){
+        return playerRepository.findAll().stream()
+                .filter(player -> team.equals(player.getTeam()) && position.equals(player.getPos()))
                 .collect(Collectors.toList());
     }
 
